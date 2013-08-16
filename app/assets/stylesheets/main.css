@@ -1,0 +1,627 @@
+/*
+ * HTML5 Boilerplate
+ *
+ * What follows is the result of much research on cross-browser styling.
+ * Credit left inline and big thanks to Nicolas Gallagher, Jonathan Neal,
+ * Kroc Camen, and the H5BP dev community and team.
+ */
+
+/* ==========================================================================
+   Base styles: opinionated defaults
+   ========================================================================== */
+
+
+html,
+button,
+input,
+select,
+textarea {
+    color: #222;
+}
+
+body {
+    font-size: 1em;
+    line-height: 1.4;
+    background: #fff url(bodybg.png) repeat-x 0 0;
+    font-family: 'Montserrat', sans-serif;
+    color: #333;
+}
+
+/*
+ * Remove text-shadow in selection highlight: h5bp.com/i
+ * These selection rule sets have to be separate.
+ * Customize the background color to match your design.
+ */
+
+::-moz-selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+::selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+/*
+ * A better looking default horizontal rule
+ */
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+}
+
+/*
+ * Remove the gap between images and the bottom of their containers: h5bp.com/i/440
+ */
+
+img {
+    vertical-align: middle;
+}
+
+/*
+ * Remove default fieldset styles.
+ */
+
+fieldset {
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+/*
+ * Allow only vertical resizing of textareas.
+ */
+
+textarea {
+    resize: vertical;
+}
+
+/* ==========================================================================
+   Chrome Frame prompt
+   ========================================================================== */
+
+.chromeframe {
+    margin: 0.2em 0;
+    background: #ccc;
+    color: #000;
+    padding: 0.2em 0;
+}
+
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+
+@font-face {
+    font-family: 'franchise';
+    src: url('franchise-bold-webfont.eot');
+    src: url('franchise-bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('franchise-bold-webfont.woff') format('woff'),
+         url('franchise-bold-webfont.ttf') format('truetype'),
+         url('franchise-bold-webfont.svg#franchiseregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Montserrat-Regular'), url(http://themes.googleusercontent.com/static/fonts/montserrat/v3/zhcz-_WihjSQC0oHJ9TCYL3hpw3pgy2gAi-Ip7WPMi0.woff) format('woff');
+}
+
+/* Default links */
+a {
+    text-decoration: none;
+    color: #333;
+}
+
+a:hover {
+    color: #cb4c15;
+}
+
+/* Home Page */
+
+h1#logo {
+    font-family: franchise, sans-serif;
+    color: #cb4c15;
+    font-size: 68px;
+    font-weight: normal;
+    margin: 0px 0 10px;
+    background: transparent url(logobg.png) no-repeat center bottom;
+    padding: 10px 0 0px;
+}
+
+#logo a {
+    color: #cb4c15;
+    text-decoration: none;
+}
+
+p.tagline {
+    font-size: 21px;
+    margin: 0;
+    padding: 10px 0 0;
+}
+
+
+
+
+
+/* movie search */
+.movie-search {
+    width: 90%;
+    position: relative;
+    margin: 20px auto;
+}
+
+.large-wrapper .movie-search {
+    max-width: 520px;
+}
+
+.movie-search input {
+    height: 57px;
+    margin: 0;
+    padding: 0;
+    background: #fff;
+    border: 1px solid #d2d2d2;
+    position: relative;
+    border-radius: 0;
+    -webkit-appearance: none;
+}
+
+.movie-search input[type="search"] {
+    border-right: 0;
+    width: 80%;
+    padding: 5px;
+    height: 47px;
+    color: #9c9c9c;
+    font-size: 22px;
+}
+
+
+.movie-search input[type="submit"] {
+    background-image: url(submitbtn.png);
+    background-repeat: no-repeat;
+    background-position: center center;
+    text-indent: -9999px;
+    width: 45px;
+    border-left: 0;
+    margin-left: -5px;
+    height: 59px;
+    top: -1px;
+}
+
+
+
+/* related movies */
+ul.results {
+    padding: 0;
+    list-style: none;
+    text-align: left;
+    width: 95%;
+    margin: 0 auto;
+    clear: both;
+    position: relative;
+    left: 2%;
+}
+
+ul.results li {
+   margin: 15px 2.5%;
+   width: 20%;
+   height: 280px;
+}
+
+
+
+ul.results li a img {
+    height: 215px;
+    width: auto;
+}
+
+ul.results li h4 {
+    font-size: 14px;
+    font-weight: normal;
+}
+
+/* Not What You Meant section */
+.not-what-you-meant ul {
+    margin: 0;
+    padding: 0 10px;
+    list-style: none;
+}
+.not-what-you-meant ul li {
+    display: inline-block;
+    font-size: 12px;
+    padding: 0 2px;
+}
+
+.not-what-you-meant ul li:after {
+    content: ', ';
+}
+
+.not-what-you-meant ul li:last-child:after {
+    content: '';
+}
+
+.not-what-you-meant ul li:first-child {
+    display: none;
+}
+
+
+
+/* Movie View */
+
+ul.movieInfo {
+    margin: 0;
+    padding: 10px 0;
+    list-style: none;
+}
+ul.movieInfo li {
+    display: inline-block;
+    padding: 0 10px;
+    font-size: 12px;
+}
+
+ul.movieInfo li a {
+    font-size: 12px;
+}
+
+p.more-recommendations {
+    font-size: 14px;
+}
+
+
+.cast-members {
+    width: 80%;
+    margin: 0px auto 10px;
+    clear: both;
+}
+
+.cast-members h3 {
+    margin-top: 5px;
+}
+
+
+ul.cast-view {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+ul.cast-view li {
+    border: 1px solid #333;
+    padding: 10px;
+}
+
+
+
+/* Footer */
+
+footer {
+    text-align: center;
+    font-size: 12px;
+    margin: 0 5% 45px;
+}
+
+
+/* ==========================================================================
+   Helper classes
+   ========================================================================== */
+
+
+/*
+* Wrappers 
+*/
+.wrapper {
+    width: 90%;
+    margin: 40px auto;
+    background: #f7f7f7;
+    border-radius: 6px;
+    padding: 0 35px 20px;
+    text-align: center;
+}
+
+.small-wrapper {
+    max-width: 530px;
+    margin: 100px auto 45px;
+}
+
+.large-wrapper {
+    max-width: 1020px;
+    width: 90%;
+    padding: 0 0 20px;
+}
+
+.content-wrapper {
+    padding: 0 30px 20px;
+}
+
+
+
+/* 
+* Drop shadow 
+*/
+.drop-shadow {
+    box-shadow: 0 10px 20px #333;
+}
+
+
+/* 
+*   General Helper
+*/
+
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+}
+
+.left.movie-poster {
+    margin: 0 15px 0 0;
+}
+
+.hide {
+    display: none;
+}
+
+.show {
+    display: block;
+}
+
+
+/*
+ * Image replacement
+ */
+
+.ir {
+    background-color: transparent;
+    border: 0;
+    overflow: hidden;
+    /* IE 6/7 fallback */
+    *text-indent: -9999px;
+}
+
+.ir:before {
+    content: "";
+    display: block;
+    width: 0;
+    height: 150%;
+}
+
+/*
+ * Hide from both screenreaders and browsers: h5bp.com/u
+ */
+
+.hidden {
+    display: none !important;
+    visibility: hidden;
+}
+
+/*
+ * Hide only visually, but have it available for screenreaders: h5bp.com/v
+ */
+
+.visuallyhidden {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+
+/*
+ * Extends the .visuallyhidden class to allow the element to be focusable
+ * when navigated to via the keyboard: h5bp.com/p
+ */
+
+.visuallyhidden.focusable:active,
+.visuallyhidden.focusable:focus {
+    clip: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    position: static;
+    width: auto;
+}
+
+/*
+ * Hide visually and from screenreaders, but maintain layout
+ */
+
+.invisible {
+    visibility: hidden;
+}
+
+/*
+ * Clearfix: contain floats
+ *
+ * For modern browsers
+ * 1. The space content is one way to avoid an Opera bug when the
+ *    `contenteditable` attribute is included anywhere else in the document.
+ *    Otherwise it causes space to appear at the top and bottom of elements
+ *    that receive the `clearfix` class.
+ * 2. The use of `table` rather than `block` is only necessary if using
+ *    `:before` to contain the top-margins of child elements.
+ */
+
+.clearfix:before,
+.clearfix:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+/*
+ * For IE 6/7 only
+ * Include this rule to trigger hasLayout and contain floats.
+ */
+
+.clearfix {
+    *zoom: 1;
+}
+
+/* ==========================================================================
+   EXAMPLE Media Queries for Responsive Design.
+   These examples override the primary ('mobile first') styles.
+   Modify as content requires.
+   ========================================================================== */
+
+@media only screen and (max-width: 935px) {
+    /* Style adjustments for viewports that meet the condition */
+    .large-wrapper {
+        width: 95%;
+    }
+    ul.results {
+        left: 0;
+    }
+    ul.results li {
+        margin-left: 0;
+        margin-right: 0;
+        width: 25%;
+    }
+}
+
+@media only screen and (max-width: 780px) {
+    ul.results li {
+        width: 30%;
+        margin-left: 1.5%;
+        margin-right: 1.5%;
+    }
+    p.tagline {
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+}
+
+
+@media only screen and (max-width: 600px) {
+    ul.results li {
+        width: 47%;
+    }
+    .small-wrapper {
+        padding-left: 2.5%;
+        padding-right: 2.5%;
+        margin-left: 0;
+        margin-right: 0;
+        width: 94%;
+        margin-top: 20px;
+    }
+    .movie-search {
+        width: 98%;
+    }
+}
+
+@media only screen and (max-width: 560px) {
+
+    h1#logo {
+        font-size: 60px;
+    }
+
+    .overview-short-description .left.movie-poster,
+    .movie-view .movie-poster {
+        width: 35%;
+    }
+    ul.results li a img {
+        height: 190px;
+    }
+    p.tagline {
+        font-size: 14px;
+    }
+
+    ul.results {
+        width: 98%;
+    }
+}
+
+@media print,
+       (-o-min-device-pixel-ratio: 5/4),
+       (-webkit-min-device-pixel-ratio: 1.25),
+       (min-resolution: 120dpi) {
+    /* Style adjustments for high resolution devices */
+}
+
+/* ==========================================================================
+   Print styles.
+   Inlined to avoid required HTTP connection: h5bp.com/r
+   ========================================================================== */
+
+@media print {
+    * {
+        background: transparent !important;
+        color: #000 !important; /* Black prints faster: h5bp.com/s */
+        box-shadow: none !important;
+        text-shadow: none !important;
+    }
+
+    a,
+    a:visited {
+        text-decoration: underline;
+    }
+
+    a[href]:after {
+        content: " (" attr(href) ")";
+    }
+
+    abbr[title]:after {
+        content: " (" attr(title) ")";
+    }
+
+    /*
+     * Don't show links for images, or javascript/internal links
+     */
+
+    .ir a:after,
+    a[href^="javascript:"]:after,
+    a[href^="#"]:after {
+        content: "";
+    }
+
+    pre,
+    blockquote {
+        border: 1px solid #999;
+        page-break-inside: avoid;
+    }
+
+    thead {
+        display: table-header-group; /* h5bp.com/t */
+    }
+
+    tr,
+    img {
+        page-break-inside: avoid;
+    }
+
+    img {
+        max-width: 100% !important;
+    }
+
+    @page {
+        margin: 0.5cm;
+    }
+
+    p,
+    h2,
+    h3 {
+        orphans: 3;
+        widows: 3;
+    }
+
+    h2,
+    h3 {
+        page-break-after: avoid;
+    }
+}

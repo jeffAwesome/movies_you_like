@@ -1,0 +1,46 @@
+<div class="wrapper large-wrapper drop-shadow">
+            <h1 id="logo"><a href="/">Movies You Like</a></h1>
+            <p class="tagline">Type the name of a movie you like... 
+we'll find movies you'd like based on that movie.</p>
+
+            <form id="movie-search" class="movie-search" action="/static/related?search='value'">
+            <input type="search" placeholder="Type the name of a movie" name="search">
+            <input type="submit" value="submit">
+            </form>
+
+            <div class="related clearfix">
+
+                <section class="content-wrapper clearfix  overview-short-description">
+                    <script id="overview-short-description" type="x-handlebars-template">
+                        {{#if poster_path}}
+                            <a href="/static/view.html?movieID={{id}}"><img class="left movie-poster" src='http://d3gtl9l2a4fn1j.cloudfront.net/t/p/w154{{poster_path}}'></a>
+                            {{else}}
+                                <h3 class="left"><a href="/static/view?movieID={{id}}">{{original_title}}</a></h3>
+                        {{/if}}
+                        <p>{{overview}}</p>
+
+                    </script>
+                </section><!--//overview-short-description-->
+
+                 <section class="related-movies">
+                <script id="related-movies" type="x-handlebars-template">
+                    <ul class="results clearfix">
+                        {{#each results}}
+                            <li class="left">
+                                <a href="/static/view.html?movieID={{id}}">
+                                    <h4 class="movie-title">{{title}}</h4>
+
+                                    <img class="left" src='http://d3gtl9l2a4fn1j.cloudfront.net/t/p/w154{{poster_path}}'>
+                                </a>
+                            </li>
+                        {{/each}}
+                    </ul>
+                </script>
+            </section><!--//related-movies-->
+
+            </div><!--//related-->
+
+        </div><!--//small-wrapper drop-shadow-->
+
+
+        <script>var exactID = myMovieRec.getQueryParam('movieID');myMovieRec.shortOverviewMovieData(exactID);</script>

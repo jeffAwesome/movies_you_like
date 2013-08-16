@@ -1,0 +1,72 @@
+
+        
+        <div class="wrapper large-wrapper drop-shadow">
+            <h1 id="logo"><a href="/">Movies You Like</a></h1>
+            <p class="tagline">Type the name of a movie you like... 
+we'll find movies you'd like based on that movie.</p>
+
+            <form id="movie-search" class="movie-search" action="/static/related?search='value'">
+            <input type="search" placeholder="Type the name of a movie" name="search">
+            <input type="submit" value="submit">
+            </form>
+
+            <div class="movie-view clearfix">
+
+                <script id="movie-view" type="x-handlebars-template">
+
+                    <section class="content-wrapper clearfix">
+                    {{#if poster_path}}
+                        <img class="left movie-poster" src='http://d3gtl9l2a4fn1j.cloudfront.net/t/p/w154{{poster_path}}'>
+                        {{else}}
+                            <img class="left movie-poster" src='http://d3gtl9l2a4fn1j.cloudfront.net/t/p/w154{{backdrop_path}}'>
+                    {{/if}}
+                    <p>{{overview}}</p>
+
+                    <ul class="movieInfo">
+                        {{#if imdb_id}}
+                        <li><a href="http://imdb.com/title/{{imdb_id}}" target="_blank">View on IMDB</a></li>
+                        {{/if}}
+                        {{#if homepage}}
+                        <li><a href="{{homepage}}" target="_blank">View Movie Homepage</a></li>
+                        {{/if}}
+                        <li><a href="http://movies.netflix.com/Search?v1={{title}}" target="_blank">Search on Netflix</a></li>
+                        <li>Released On: {{release_date}}</li>
+                        {{#if vote_average}}
+                        <li>User Rating: {{vote_average}}</li>
+                        {{/if}}
+                    </ul>
+
+                   <p class="more-recommendations">If you like this movie, <strong><a href="/static/exactMovie?movieID={{id}}">view our movie recommendations for it</a></strong></p>
+
+                    </section>
+                    </script>
+
+                </div>
+
+                <section class="cast-members clearfix">
+
+                    <script id="movie-cast-view" type="x-handlebars-template">
+                        <h3>Cast Members:</h3>
+                        <ul class="cast-view">
+                        {{#each cast}}
+                            <li class="cast-member clearfix">
+                                {{#if profile_path}}
+                                <img class="left actor-profile" src="http://d3gtl9l2a4fn1j.cloudfront.net/t/p/w45{{profile_path}}" alt="{{name}}">
+                                {{else}}
+                                <img class="left actor-profile" width="45" height="56" src="img/noPicActor.png" alt="" />
+                                {{/if}}
+
+                                <span class="real-name">{{name}}</span>
+                                <span class="playing-as">Playing as..{{character}}</span>
+                        {{/each}}
+                        </ul>
+
+                </script>
+
+            </section>
+
+
+            <script>myMovieRec.movieViewData();</script>
+
+
+        </div><!--//small-wrapper drop-shadow-->

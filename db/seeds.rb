@@ -8,19 +8,15 @@
 unless Rails.env.production?
   user = User.where(email: "user@example.com").first_or_create(
                     email: "user@example.com",
-                 username: "johnny_user",
-               first_name: "Johnny",
-                last_name: "User",
                  password: "password",
     password_confirmation: "password",
   )
 
   user2 = User.where(email: "user2@example.com").first_or_create(
                     email: "user2@example.com",
-                 username: "sammy_user",
-               first_name: "Sammy",
-                last_name: "User",
                  password: "password",
     password_confirmation: "password",
   )
+
+
 end

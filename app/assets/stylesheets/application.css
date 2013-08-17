@@ -11,4 +11,5 @@
  *= require_self
  *= include normalize.css
  *= include main.css
+ *= include playlists.css.scss
  */

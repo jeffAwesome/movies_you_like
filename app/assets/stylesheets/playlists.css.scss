@@ -1,0 +1,22 @@
+// Place all the styles related to the Playlists controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.playlist-container {
+  border: 1px solid #efefef;
+  width: 90%;
+  margin: 0 auto;
+  .playlist {
+    float: left;
+    width: 33%;
+    .img-play {
+      background: url(playlist-default.png) no-repeat top center;
+      background-size: contain;
+      display: block;
+      width: 90%;
+      height: 85px;
+      margin: 0 10px 20px;
+    }
+  }
+}

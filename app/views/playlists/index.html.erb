@@ -1,0 +1,16 @@
+<h1>Your playlists</h1>
+
+  <div class="playlist-container clearfix">
+    <% @playlists.each do |playlist| %>
+      <div class="playlist">
+        <h3 class="playlist-title"><%= link_to playlist.title, playlist %></h3>
+        <span class="img-play"> </span>
+        <%= link_to 'Edit', edit_playlist_path(playlist) %> |
+        <%= link_to 'Delete', playlist, method: :delete, data: { confirm: 'Are you sure?' } %>
+      </div>
+    <% end %>
+  </div>
+
+<br>
+
+<%= link_to 'New Playlist', new_playlist_path %>

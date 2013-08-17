@@ -126,6 +126,14 @@ a:hover {
     color: #cb4c15;
 }
 
+/* Logged Bar */
+section.logged_bar {
+    display: block;
+    background: none repeat scroll 0 0 #F7F7F7;
+    padding: 10px 0;
+    text-align: center;
+}
+
 /* Home Page */
 
 h1#logo {
@@ -195,6 +203,17 @@ p.tagline {
     margin-left: -5px;
     height: 59px;
     top: -1px;
+}
+
+/* HIde search on registration pages */
+
+.registrations-new .tagline,
+.sessions-new .tagline,
+.registrations-edit .tagline,
+.registrations-new #movie-search,
+.sessions-new #movie-search,
+.registrations-edit #movie-search  {
+    display: none;
 }
 
 

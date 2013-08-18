@@ -10,4 +10,8 @@ class StaticController < ApplicationController
 
   def exactMovie
   end
+
+  def about
+  end
+  
 end

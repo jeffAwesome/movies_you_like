@@ -37,6 +37,9 @@
                             {{else}}
                             <a class="add_to_playlist" href="/movies/new?mov_id={{id}}&title={{title}}&thumbnail=d3gtl9l2a4fn1j.cloudfront.net/t/p/w154{{backdrop_path}}">Add Movie To Playlist</a>
                         {{/if}}
+
+                    <% else %>
+                        <%= link_to "Sign up to save this movie to a playlist", new_user_registration_path %>
                     <% end %>
 
                     </section>

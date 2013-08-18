@@ -14,9 +14,11 @@ MoviesYouLike::Application.routes.draw do
 
   get 'static/related'
 
-  get 'static/view'
+  get 'static/view', as: :static_view
 
   get 'static/exactMovie'
+
+  get 'static/about'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

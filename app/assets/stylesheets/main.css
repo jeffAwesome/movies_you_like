@@ -134,6 +134,10 @@ section.logged_bar {
     text-align: center;
 }
 
+a.edit-profile {
+  font-weight: bold;
+}
+
 p.notice { background:#e6efc2;color:#264409;border-color:#c6d880; padding: 15px 0;}
 
 /* Home Page */
@@ -330,17 +334,27 @@ footer {
     margin: 0 5% 45px;
 }
 
+/* about */
+.center-container {
+    width: 80%;
+    margin: 0 auto;
+    text-align: left;
+}
 
 
 /* Add To Playlist */
-form.new_movie {
+form.new_movie,
+form.edit_user,
+form.new_user {
     padding: 10px 0;
 }
 select {
     width: 230px;
     padding: 10px 0;
 }
-.field {
+.field,
+.edit_user div,
+.new_user div {
     padding: 10px 0;
 }
 .actions {
@@ -348,16 +362,20 @@ select {
 }
 .add_to_playlist,
 .actions input[type="submit"],
-.big_button {
+.big_button,
+.edit_user input[type="submit"],
+.button_to input[type="submit"],
+.new_user input[type="submit"]{
     /* background: none repeat scroll 0 0 #CB4C15; */
     border-radius: 6px 6px 6px 6px;
     border: 0;
     color: #FEFEFE;
     display: block;
     margin: 0 auto;
-    padding: 10px 0;
+    padding: 10px 15px;
     text-align: center;
-    width: 225px;
+    min-width: 225px;
+    max-width: 250px;
     box-shadow: -1px 2px 3px rgba(0, 0, 0, 0.5);
     background-image: linear-gradient(bottom, rgb(215,59,3) 31%, rgb(255,89,29) 66%, rgb(227,82,20) 83%);
     background-image: -o-linear-gradient(bottom, rgb(215,59,3) 31%, rgb(255,89,29) 66%, rgb(227,82,20) 83%);
@@ -377,10 +395,18 @@ select {
 
 .add_to_playlist:hover,
 .big_button:hover,
-.actions input[type="submit"]:focus
+.actions input[type="submit"]:focus,
+.edit_user input[type="submit"]:focus
  {
     text-shadow: 0px 5px 2px rgba(200, 200, 200, 0.7);
     color: #fff;
+}
+
+
+/* Playlist */
+.playlist-delete {
+    padding: 10px 0;
+    text-align: left;
 }
 
 

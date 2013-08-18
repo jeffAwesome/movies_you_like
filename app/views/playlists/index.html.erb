@@ -1,5 +1,6 @@
 <h1>Your playlists</h1>
 
+<%= link_to 'New Playlist', new_playlist_path, {:class => 'big_button' }%>
   <div class="playlist-container clearfix">
     <% @playlists.each do |playlist| %>
       <div class="playlist">
@@ -12,5 +13,3 @@
   </div>
 
 <br>
-
-<%= link_to 'New Playlist', new_playlist_path %>

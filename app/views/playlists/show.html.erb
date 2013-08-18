@@ -1,8 +1,9 @@
 <p id="notice"><%= notice %></p>
 
+<h3 class="playlist-title"><%= @playlist.title %> Playlist</h3>
 <p>
-  <strong>Title:</strong>
-  <%= @playlist.title %>
+  <%= link_to 'Edit', edit_playlist_path(@playlist) %> |
+  <%= link_to 'Back', playlists_path %>
 </p>
 
 
@@ -19,6 +20,5 @@
   
   
 <% end %>
+</ul>
 
-<%= link_to 'Edit', edit_playlist_path(@playlist) %> |
-<%= link_to 'Back', playlists_path %>

@@ -134,6 +134,8 @@ section.logged_bar {
     text-align: center;
 }
 
+p.notice { background:#e6efc2;color:#264409;border-color:#c6d880; padding: 15px 0;}
+
 /* Home Page */
 
 h1#logo {

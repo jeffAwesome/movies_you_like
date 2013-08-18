@@ -1,4 +1,4 @@
-<h1>New movie</h1>
+
 
 <%= form_for(@movie) do |f| %>
   <% if @movie.errors.any? %>
@@ -13,9 +13,10 @@
     </div>
   <% end %>
 
+
+<h2 class="select_title">Add the movie to a playlist</h2>
+
   <div class="field">
-    <%= f.label :playlist_id %><br>
-  
     <%= f.select(
        :playlist_id,
        options_from_collection_for_select(@playlists, :id, :title)
@@ -34,7 +35,7 @@
     <%= f.number_field :mov_id, :value => @mov_id%>
   </div>
 </div>
-  <div class="actions">
+  <div class="actions submitBtn">
     <%= f.submit %>
   </div>
 <% end %>

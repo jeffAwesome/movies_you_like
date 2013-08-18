@@ -153,6 +153,10 @@ h6 {
     margin: 2.33em 0;
 }
 
+h2.select_title {
+    margin: 10px 0 0;
+}
+
 /**
  * Address styling not present in IE 7/8/9, Safari 5, and Chrome.
  */

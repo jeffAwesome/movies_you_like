@@ -28,16 +28,16 @@
                         {{/if}}
                     </ul>
 
+                   <p class="more-recommendations">If you like this movie, <strong><a href="/static/exactMovie?movieID={{id}}">view our movie recommendations for it</a></strong></p>
 
-                     <% if user_signed_in? %>
+
+                    <% if user_signed_in? %>
                          {{#if poster_path}}
-                            <a href="/movies/new?mov_id={{id}}&title={{title}}&thumbnail=d3gtl9l2a4fn1j.cloudfront.net/t/p/w154{{poster_path}}">Add Movie To Playlist</a>
+                            <a class="add_to_playlist" href="/movies/new?mov_id={{id}}&title={{title}}&thumbnail=d3gtl9l2a4fn1j.cloudfront.net/t/p/w154{{poster_path}}">Add Movie To Playlist</a>
                             {{else}}
-                            <a href="/movies/new?mov_id={{id}}&title={{title}}&thumbnail=d3gtl9l2a4fn1j.cloudfront.net/t/p/w154{{backdrop_path}}">Add Movie To Playlist</a>
+                            <a class="add_to_playlist" href="/movies/new?mov_id={{id}}&title={{title}}&thumbnail=d3gtl9l2a4fn1j.cloudfront.net/t/p/w154{{backdrop_path}}">Add Movie To Playlist</a>
                         {{/if}}
                     <% end %>
-
-                   <p class="more-recommendations">If you like this movie, <strong><a href="/static/exactMovie?movieID={{id}}">view our movie recommendations for it</a></strong></p>
 
                     </section>
 

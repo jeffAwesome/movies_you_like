@@ -5,19 +5,21 @@ class PlaylistsController < ApplicationController
   # GET /playlists
   # GET /playlists.json
   def index
-    @playlists = Playlist.all
+    @playlists = current_user.playlists.all
     render :layout => "admin"
   end
 
   # GET /playlists/1
   # GET /playlists/1.json
   def show
+    @movies = Movie.where('playlist_id = ?', Playlist.find(params[:id]))
     render :layout => "admin"
   end
 
   # GET /playlists/new
   def new
     @playlist = Playlist.new
+    @user = current_user
     render :layout => "admin"
   end
 
@@ -74,6 +76,6 @@ class PlaylistsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def playlist_params
-      params.require(:playlist).permit(:title)
+      params.require(:playlist).permit(:title, :user_id)
     end
 end

@@ -5,5 +5,20 @@
   <%= @playlist.title %>
 </p>
 
+
+<ul class="results clearfix">
+<% @movies.each do |movie| %>
+ 
+                        
+	<li class="left">
+    	<a href="/static/view?movieID=605">
+        <h4 class="movie-title"><%= movie.title %></h4>
+        <%= image_tag("http://#{movie.thumbnail}", class: "left") %>
+        </a>
+    </li>
+  
+  
+<% end %>
+
 <%= link_to 'Edit', edit_playlist_path(@playlist) %> |
 <%= link_to 'Back', playlists_path %>

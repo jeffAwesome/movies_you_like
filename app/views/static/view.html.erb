@@ -10,7 +10,9 @@
                         {{else}}
                             <img class="left movie-poster" src='http://d3gtl9l2a4fn1j.cloudfront.net/t/p/w154{{backdrop_path}}'>
                     {{/if}}
-                    <p>{{overview}}</p>
+
+
+                    <p>{{overview}}></p>
 
                     <ul class="movieInfo">
                         {{#if imdb_id}}
@@ -26,9 +28,20 @@
                         {{/if}}
                     </ul>
 
+
+                     <% if user_signed_in? %>
+                         {{#if poster_path}}
+                            <a href="/movies/new?mov_id={{id}}&title={{title}}&thumbnail=d3gtl9l2a4fn1j.cloudfront.net/t/p/w154{{poster_path}}">Add Movie To Playlist</a>
+                            {{else}}
+                            <a href="/movies/new?mov_id={{id}}&title={{title}}&thumbnail=d3gtl9l2a4fn1j.cloudfront.net/t/p/w154{{backdrop_path}}">Add Movie To Playlist</a>
+                        {{/if}}
+                    <% end %>
+
                    <p class="more-recommendations">If you like this movie, <strong><a href="/static/exactMovie?movieID={{id}}">view our movie recommendations for it</a></strong></p>
 
                     </section>
+
+                
                     </script>
 
                 </div>

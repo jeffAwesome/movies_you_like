@@ -1,11 +1,14 @@
 class MoviesController < ApplicationController
+  include ActiveModel::Validations
+
   before_action :set_movie, only: [:show, :edit, :update, :destroy]
 
+ 
 
   # GET /movies
   # GET /movies.json
   def index
-    @movies = Movie.all
+    redirect_to playlists_path()
   end
 
   # GET /movies/1
@@ -20,6 +23,9 @@ class MoviesController < ApplicationController
     @mov_id = params[:mov_id]
     @thumbnail = params[:thumbnail]
     @title = params[:title]
+
+    redirect_to playlists_path(), notice: 'You need to create a playlist before you can add a movie' if @playlists.count == 0
+
   end
 
   # GET /movies/1/edit
@@ -31,10 +37,9 @@ class MoviesController < ApplicationController
   # POST /movies.json
   def create
     @movie = Movie.new(movie_params)
-
     respond_to do |format|
       if @movie.save
-        format.html { redirect_to playlists_path(),  notice: 'Movie was successfully created.' }
+        format.html { redirect_to "/static/view?movieID=#{@movie.mov_id}",  notice: 'Movie was successfully added to your playlist.' }
         format.json { render action: 'show', status: :created, location: @movie }
       else
         format.html { render action: 'new' }
@@ -63,7 +68,7 @@ class MoviesController < ApplicationController
   def destroy
     @movie.destroy
     respond_to do |format|
-      format.html { redirect_to movies_url }
+      format.html { redirect_to playlists_url }
       format.json { head :no_content }
     end
   end

@@ -2,8 +2,8 @@
 
 <h3 class="playlist-title"><%= @playlist.title %> Playlist</h3>
 <p>
-  <%= link_to 'Edit', edit_playlist_path(@playlist) %> |
-  <%= link_to 'Back', playlists_path %>
+  <%= link_to 'Edit | ', edit_playlist_path(@playlist)  if user_signed_in? %>
+  <%= link_to 'Back To Playlists', playlists_path %>
 </p>
 
 
@@ -12,10 +12,14 @@
  
                         
 	<li class="left">
-    	<a href="/static/view?movieID=605">
+    	<a href="/static/view?movieID=<%=movie.mov_id%>" class="clearfix">
         <h4 class="movie-title"><%= movie.title %></h4>
         <%= image_tag("http://#{movie.thumbnail}", class: "left") %>
         </a>
+
+        <div class="playlist-delete">
+          <%= link_to 'Delete Movie', movie, method: :delete, data: { confirm: 'Are you sure?' }  if user_signed_in? %>
+        </div>
     </li>
   
   

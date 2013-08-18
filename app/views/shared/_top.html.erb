@@ -1,9 +1,9 @@
 <section class="logged_bar">
 
 	<% if user_signed_in? %>
-	  Logged in as <strong><%= current_user.email %></strong>.
-	  <%= link_to 'Edit profile', edit_user_registration_path %> |
+	  <%= link_to current_user.email, edit_user_registration_path, {:class => 'edit-profile'} %> |
 	  <%= link_to 'Your Playlists', playlists_path %> |
+	  <%= link_to 'Create A Playlists', new_playlist_path %> |
 	  <%= link_to "Logout", destroy_user_session_path, method: :delete %>
 	<% else %>
 	  <%= link_to "Sign up", new_user_registration_path %> |

@@ -1,6 +1,6 @@
 class PlaylistsController < ApplicationController
   before_action :set_playlist, only: [:show, :edit, :update, :destroy]
-  before_filter :authenticate_user!
+  before_filter :authenticate_user!, :except => [:show]
 
   # GET /playlists
   # GET /playlists.json
@@ -25,7 +25,12 @@ class PlaylistsController < ApplicationController
 
   # GET /playlists/1/edit
   def edit
-    render :layout => "admin"
+    @user = @playlist.user_id
+    if @user == current_user.id
+     render :layout => "admin"
+    else
+      redirect_to playlists_path(), notice: 'You do not have access to edit this playlist'
+    end
   end
 
   # POST /playlists
@@ -35,7 +40,7 @@ class PlaylistsController < ApplicationController
 
     respond_to do |format|
       if @playlist.save
-        format.html { redirect_to @playlist, notice: 'Playlist was successfully created.' }
+        format.html { redirect_to playlists_path(), notice: 'Playlist was successfully created.' }
         format.json { render action: 'show', status: :created, location: @playlist }
       else
         format.html { render action: 'new' }

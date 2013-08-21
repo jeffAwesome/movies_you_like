@@ -1,6 +1,15 @@
 <h1>Your playlists</h1>
 
-<%= link_to 'New Playlist', new_playlist_path, {:class => 'big_button' }%>
+
+<% if @playlists.count >= 1 %>
+  <ul class="info-bar clearfix">
+  <li><%= link_to "Add a movies to your playlists.", root_path, {:class => 'big_button f-left' } %></li>
+  <li><%= link_to 'New Playlist', new_playlist_path, {:class => 'big_button f-left' }%></li>
+<% else %>
+  <ul class="info-bar small clearfix">
+  <li><%= link_to 'New Playlist', new_playlist_path, {:class => 'big_button f-left' }%></li>
+<% end %>
+</ul>
   <div class="playlist-container clearfix">
     <% @playlists.each do |playlist| %>
       <div class="playlist">

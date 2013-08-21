@@ -1,16 +1,30 @@
+<h2 class="playlist-title"><%= @playlist.title %> Playlist</h2>
+
+<h4>Share Your Playlist with Friends</h4>
+<script type="text/javascript">var switchTo5x=true;</script>
+<script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+<script type="text/javascript">stLight.options({publisher: "54b01a15-1b86-434c-ab33-b36e0ba730d5", doNotHash: false, doNotCopy: false, hashAddressBar: false});</script>
+
 <p id="notice"><%= notice %></p>
 
-<h3 class="playlist-title"><%= @playlist.title %> Playlist</h3>
-<p>
-  <%= link_to 'Edit | ', edit_playlist_path(@playlist)  if user_signed_in? %>
-  <%= link_to 'Back To Playlists', playlists_path %>
-</p>
+<span class='st_facebook_hcount' displayText='Facebook'></span>
+<span class='st_fblike_hcount' displayText='Facebook Like'></span>
+<span class='st_twitter_hcount' displayText='Tweet'></span>
+<span class='st_linkedin_hcount' displayText='LinkedIn'></span>
+<span class='st_pinterest_hcount' displayText='Pinterest'></span>
+<span class='st_email_hcount' displayText='Email'></span>
 
+<p>
+  <% if user_signed_in? %>
+    <%= link_to 'Edit | ', edit_playlist_path(@playlist) %>
+    <%= link_to 'Back To Playlists', playlists_path %>
+  <% end %>
+</p>
 
 <ul class="results clearfix">
 <% @movies.each do |movie| %>
- 
-                        
+
+
 	<li class="left">
     	<a href="/static/view?movieID=<%=movie.mov_id%>" class="clearfix">
         <h4 class="movie-title"><%= movie.title %></h4>
@@ -21,8 +35,8 @@
           <%= link_to 'Delete Movie', movie, method: :delete, data: { confirm: 'Are you sure?' }  if user_signed_in? %>
         </div>
     </li>
-  
-  
+
+
 <% end %>
 </ul>
 

@@ -1,43 +1,46 @@
+<% if @playlists.count == 0 %>
+  <h3>You can't add a movie unless you have a playlist... add one now below:</h3>
+  <%= render 'playlists/form' %>
+<% else %>
+  <%= form_for(@movie) do |f| %>
+    <% if @movie.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@movie.errors.count, "error") %> prohibited this movie from being saved:</h2>
+
+        <ul>
+          <% @movie.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
 
 
-<%= form_for(@movie) do |f| %>
-  <% if @movie.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@movie.errors.count, "error") %> prohibited this movie from being saved:</h2>
+    <h2 class="select_title">Add the movie to a playlist</h2>
 
-      <ul>
-      <% @movie.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+    <div class="field">
+      <%= f.select(
+        :playlist_id,
+        options_from_collection_for_select(@playlists, :id, :title)
+      ) %>
+    </div>
+
+    <div class="hidden">
+      <div class="field">
+        <%= f.text_field :title, :value => @title %>
+      </div>
+      <div class="field">
+        <%= f.text_field :thumbnail, :value => @thumbnail %>
+      </div>
+      <div class="field">
+        <%= f.label :mov_id %><br>
+        <%= f.number_field :mov_id, :value => @mov_id%>
+      </div>
+    </div>
+    <div class="actions submitBtn">
+      <%= f.submit :value => "Add Movie To Plalist" %>
     </div>
   <% end %>
 
-
-<h2 class="select_title">Add the movie to a playlist</h2>
-
-  <div class="field">
-    <%= f.select(
-       :playlist_id,
-       options_from_collection_for_select(@playlists, :id, :title)
-) %>
-  </div>
-
-  <div class="hidden">
-  <div class="field">
-    <%= f.text_field :title, :value => @title %>
-  </div>
-  <div class="field">
-    <%= f.text_field :thumbnail, :value => @thumbnail %>
-  </div>
-  <div class="field">
-    <%= f.label :mov_id %><br>
-    <%= f.number_field :mov_id, :value => @mov_id%>
-  </div>
-</div>
-  <div class="actions submitBtn">
-    <%= f.submit %>
-  </div>
+  <%= link_to 'Back', movies_path %>
 <% end %>
-
-<%= link_to 'Back', movies_path %>

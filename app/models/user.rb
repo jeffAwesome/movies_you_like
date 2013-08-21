@@ -5,5 +5,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  validates :username, presence: true
+  validates :username, uniqueness: true, if: -> { self.username.present? }
+
   has_many :playlists
 end

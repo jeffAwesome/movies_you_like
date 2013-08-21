@@ -37,9 +37,13 @@ class PlaylistsController < ApplicationController
   # POST /playlists.json
   def create
     @playlist = Playlist.new(playlist_params)
+    @playlists = current_user.playlists.count
 
     respond_to do |format|
-      if @playlist.save
+      if @playlist.save && @playlists == 0
+        format.html { redirect_to :back, notice: 'Playlist was successfully created.' }
+        format.json { render action: 'show', status: :created, location: @playlist }
+      elsif @playlist.save
         format.html { redirect_to playlists_path(), notice: 'Playlist was successfully created.' }
         format.json { render action: 'show', status: :created, location: @playlist }
       else

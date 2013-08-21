@@ -3,7 +3,7 @@ class MoviesController < ApplicationController
 
   before_action :set_movie, only: [:show, :edit, :update, :destroy]
 
- 
+
 
   # GET /movies
   # GET /movies.json
@@ -19,12 +19,14 @@ class MoviesController < ApplicationController
   # GET /movies/new
   def new
     @movie = Movie.new
+    @playlist = Playlist.new
     @playlists = current_user.playlists.all
+    @user = current_user
     @mov_id = params[:mov_id]
     @thumbnail = params[:thumbnail]
     @title = params[:title]
 
-    redirect_to playlists_path(), notice: 'You need to create a playlist before you can add a movie' if @playlists.count == 0
+    #redirect_to new_playlist_path(:mov_id => @mov_id), notice: 'You need to create a playlist before you can add a movie' if @playlists.count == 0
 
   end
 

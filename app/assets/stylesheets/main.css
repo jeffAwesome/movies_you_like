@@ -116,6 +116,25 @@ textarea {
   src: local('Montserrat-Regular'), url(http://themes.googleusercontent.com/static/fonts/montserrat/v3/zhcz-_WihjSQC0oHJ9TCYL3hpw3pgy2gAi-Ip7WPMi0.woff) format('woff');
 }
 
+.f-left {
+  float: left;
+}
+
+ul.info-bar {
+  margin: 0 auto 10px;
+  width: 575px;
+  padding: 0;
+  list-style none;
+}
+ul.info-bar.small {
+  width: 300px;
+}
+ul.info-bar li {
+  list-style: none;
+  float: left;
+  padding: 0 10px;
+}
+
 /* Default links */
 a {
     text-decoration: none;

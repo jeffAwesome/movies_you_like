@@ -12,7 +12,6 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
 //= include modernizr.js
 //= include handlebars.js
 //= include plugins.js

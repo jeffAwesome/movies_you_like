@@ -22,7 +22,7 @@ textarea {
 body {
     font-size: 1em;
     line-height: 1.4;
-    background: #fff url(bodybg.png) repeat-x 0 0;
+    background: #fff url(image_path(bodybg.png)) repeat-x 0 0;
     font-family: 'Montserrat', sans-serif;
     color: #333;
 }

@@ -124,7 +124,7 @@ ul.info-bar {
   margin: 0 auto 10px;
   width: 575px;
   padding: 0;
-  list-style none;
+  list-style: none;
 }
 ul.info-bar.small {
   width: 300px;

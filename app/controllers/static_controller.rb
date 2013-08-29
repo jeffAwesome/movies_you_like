@@ -18,7 +18,6 @@ class StaticController < ApplicationController
   def view
     cookies[:mov_id] = params[:movieID] unless user_signed_in?
 
-    @playlists = current_user.playlists.all
     @playlist = Playlist.new
     @movie = Movie.new
 

@@ -16,3 +16,4 @@
 //= include handlebars.js
 //= include plugins.js
 //= include main.js
+//= include static

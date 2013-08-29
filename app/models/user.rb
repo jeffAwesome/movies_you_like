@@ -9,4 +9,5 @@ class User < ActiveRecord::Base
   validates :username, uniqueness: true, if: -> { self.username.present? }
 
   has_many :playlists
+
 end

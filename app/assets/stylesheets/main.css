@@ -362,6 +362,9 @@ footer {
 
 
 /* Add To Playlist */
+.static-view #new_movie {
+  display: none;
+}
 form.new_movie,
 form.edit_user,
 form.new_user {

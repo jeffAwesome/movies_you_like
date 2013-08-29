@@ -31,15 +31,12 @@
 
 
                     <% if user_signed_in? %>
-                         {{#if poster_path}}
-                            <a class="add_to_playlist" href="/movies/new?mov_id={{id}}&title={{title}}&thumbnail=d3gtl9l2a4fn1j.cloudfront.net/t/p/w154{{poster_path}}">Add Movie To Playlist</a>
-                            {{else}}
-                            <a class="add_to_playlist" href="/movies/new?mov_id={{id}}&title={{title}}&thumbnail=d3gtl9l2a4fn1j.cloudfront.net/t/p/w154{{backdrop_path}}">Add Movie To Playlist</a>
-                        {{/if}}
-
+                      <%= link_to "Add to playlist", "javascript:;", {:class => 'big_button add_playlists', :id => 'add_playlists' } %>
+                      <%= render 'movies/new' %>
                     <% else %>
                       <%= link_to "Sign up to save this movie to a playlist", new_user_registration_path, {:class => 'big_button'} %>
                     <% end %>
+
 
                     </section>
 

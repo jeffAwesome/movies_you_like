@@ -5,7 +5,7 @@ class PlaylistsController < ApplicationController
   # GET /playlists
   # GET /playlists.json
   def index
-    @playlists = current_user.playlists.all
+    @playlists = current_user.playlists.order('title')
     render :layout => "admin"
   end
 

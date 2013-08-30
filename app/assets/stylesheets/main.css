@@ -433,6 +433,33 @@ select {
 }
 
 
+/* Create playlist */
+#new_playlist {
+  width: 70%;
+  max-width: 600px;
+  margin: 0 auto;
+}
+#new_playlist label {
+  text-align: left;
+  display: block;
+}
+
+#new_playlist .title-field {
+  max-width: 300px;
+  width: 100%;
+}
+#new_playlist input {
+  width: 100%;
+  max-width: 300px;
+}
+
+#new_playlist textarea {
+  width: 100%;
+  max-width: 600px;
+  height: 200px;
+}
+
+
 /* ==========================================================================
    Helper classes
    ========================================================================== */

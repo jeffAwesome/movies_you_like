@@ -1,4 +1,7 @@
 <h2 class="playlist-title"><%= @playlist.title %> Playlist</h2>
+<% if @playlist.about_playlist %>
+<p><%= @playlist.about_playlist %></p>
+<% end %>
 
 <h4>Share Your Playlist with Friends</h4>
 <script type="text/javascript">var switchTo5x=true;</script>

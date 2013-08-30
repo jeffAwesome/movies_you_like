@@ -18,8 +18,13 @@
       <%= f.text_field :user_id, :value => @user.id %>
     </div>
 
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
+    <div class="title-field">
+      <%= f.label :title %><br />
+      <%= f.text_field :title %>
+    </div>
+    <br /><br />
+    <%= f.label :about_playlist %><br />
+    <%= f.text_area :about_playlist %>
   </div>
   <div class="actions">
     <%= f.submit %>

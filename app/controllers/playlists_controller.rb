@@ -13,6 +13,7 @@ class PlaylistsController < ApplicationController
   # GET /playlists/1.json
   def show
     @movies = Movie.where('playlist_id = ?', Playlist.find(params[:id]))
+    @playlist_author = @playlist.user_id
     render :layout => "admin"
   end
 

@@ -19,7 +19,9 @@
 
 <p>
   <% if user_signed_in? %>
-    <%= link_to 'Edit | ', edit_playlist_path(@playlist) %>
+    <% if current_user.id == @playlist_author %>
+      <%= link_to 'Edit | ', edit_playlist_path(@playlist) %>
+    <% end %>
     <%= link_to 'Back To Playlists', playlists_path %>
   <% end %>
 </p>
@@ -33,9 +35,8 @@
         <h4 class="movie-title"><%= movie.title %></h4>
         <%= image_tag("http://#{movie.thumbnail}", class: "left") %>
         </a>
-
         <div class="playlist-delete">
-          <%= link_to 'Delete Movie', movie, method: :delete, data: { confirm: 'Are you sure?' }  if user_signed_in? %>
+          <%= link_to 'Delete Movie', movie, method: :delete, data: { confirm: 'Are you sure?' }  if user_signed_in? && current_user.id == @playlist_author %>
         </div>
     </li>
 

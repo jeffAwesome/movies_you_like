@@ -26,7 +26,7 @@
         var enMovie = encodeURIComponent(term);
          $.ajax({
             type: 'GET',
-            url: 'http://api.themoviedb.org/3/search/movies?api_key=8e7c67585fa149a56537b63fe68776ae&query='+enMovie+'',
+            url: 'http://api.themoviedb.org/3/search/movie?api_key=8e7c67585fa149a56537b63fe68776ae&query='+enMovie+'',
             dataType: 'json',
             success: function(data) {
                 if (data.total_results === 0) {

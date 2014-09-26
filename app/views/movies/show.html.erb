@@ -1,24 +1,96 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Playlist:</strong>
-  <%= @movie.playlist_id %>
-</p>
+<div class="interactions">
+  <div id="likes">
+    <%= render partial: "likes" %>
+  </div>
+  <div id="add-to-playlist">
+     <% if user_signed_in? %>
+       <%= link_to "Add to playlist", "javascript:;", {:class => 'big_button add_playlists', :id => 'add_playlists' } %>
+ <!--
+     Here we need to create a new model that stores movies in a playlist.
+     Originally it was a movie that you created... but now we are doing things differently.
+     We will need a complete rewrite here. Instead of movies we need to call it playlist_movie.
+     render 'movies/new'
+   -->
 
-<p>
-  <strong>Title:</strong>
-  <%= @movie.title %>
-</p>
+        <% else %>
+          <%= link_to "Sign up to save this movie to a playlist", new_user_registration_path, {:class => 'big_button'} %>
+      <% end %>
+  </div>
+</div>
 
-<p>
-  <strong>Thumbnail:</strong>
-  <%= @movie.thumbnail %>
-</p>
 
-<p>
-  <strong>Mov:</strong>
-  <%= @movie.mov_id %>
-</p>
+ <div class="related">
 
-<%= link_to 'Edit', edit_movie_path(@movie) %> |
-<%= link_to 'Back', playlists_path %>
+  <section class="content-wrapper overview-short-description clearfix">
+  <%= image_tag("#{@configuration.base_url}w154#{@movie.poster_path}", :class => "left movie-poster") if @movie.poster_path %>
+  <h2 class="title"><%= @movie.title %></h2>
+  <small><%= @movie.tagline %></small>
+  <p><%= @movie.overview %></p>
+
+  <div class="genre-list">
+   <ul class="genres">
+     <li class="heading">Genres</li>
+     <% @movie.genres.each do |genre| %>
+       <li><%= genre['name'] %></li>
+     <% end %>
+    </ul>
+
+  </section>
+
+  <section class="content-wrapper more-info clearfix">
+      <div id="videoTrailers" class="left">
+
+      </div>
+
+      <div class="hidden">
+      <% @trailers['youtube'].each do |trailer| %>
+    		<%= link_to "#{trailer['name']} - #{trailer['size']}", "http://www.youtube.com/watch?v=#{trailer['source']}" %><br />
+                <div class="video-uris" data-id="<%=u  "http://www.youtube.com/watch?v=#{trailer['source']}" %>">Yup yup</div>
+    	<% end %>
+      </div>
+
+
+
+      <div class="fun-facts left">
+      <h3>Facts</h3>
+      Budget: $<%= number_with_delimiter(@movie.budget, :delimiter => ',') %><br />
+      Revenue: $<%= number_with_delimiter(@movie.revenue, :delimiter => ',') %><br />
+      Status: <%= @movie.status %><br />
+      Runtime: <%= @movie.runtime %><br />
+      Release Date: <br />
+      <%= @movie.release_date.to_date.strftime("%d/%m/%Y") if @movie.release_date %><br />
+      </div>
+
+  </section>
+
+    </div>
+    <div class="span10">
+    <section class="content-wrapper cast-members">
+
+
+			<h3>Cast Members</h3>
+                                <ul class="cast-view">
+				<% @cast.first(5).each do |cast| %>
+<li class="cast-member clearfix">
+<%= image_tag("#{@configuration.base_url}w45#{cast['profile_path']}", class: "left actor-profile") if cast['profile_path'] %>
+<% unless cast['profile_path'] %><img src="http://placehold.it/154x154"><% end %>
+<%= link_to cast['name'], person_path(cast['id']) %> as <%= cast['character'] %><br />
+</li>
+				<% end %>
+
+     </section>
+
+			<% if @similar_movies %>
+<div class="hidden">
+			<h3>Similar Movies</h3>
+				<% @similar_movies.first(14).each do |movie| %>
+					<% if movie %>
+						<%= link_to movie_path(movie['id']) do %>
+                                                    <%= movie.title %>
+						<% end %>
+					<% end %>
+				<% end %>
+			<% end %>
+</div><!-- hidden -->
+    </div>

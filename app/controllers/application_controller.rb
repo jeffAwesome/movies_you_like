@@ -4,9 +4,16 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   before_filter :configure_permitted_parameters, if: :devise_controller?
+  before_filter :set_config
 
+  Tmdb::Api.key("8e7c67585fa149a56537b63fe68776ae")
 
   protected
+
+  def set_config
+    @configuration = Tmdb::Configuration.new
+  end
+
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_up) do |u|

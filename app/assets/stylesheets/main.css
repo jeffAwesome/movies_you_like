@@ -97,6 +97,15 @@ textarea {
    Author's custom styles
    ========================================================================== */
 
+/* Helpers */
+.title {
+  margin-bottom: 0 !important;
+}
+
+
+
+
+
 @font-face {
     font-family: 'franchise';
     src: url('franchise-bold-webfont.eot');
@@ -237,7 +246,8 @@ p.tagline {
 .registrations-edit .tagline,
 .registrations-new #movie-search,
 .sessions-new #movie-search,
-.registrations-edit #movie-search  {
+.registrations-edit #movie-search,
+.noembed-meta-info  {
     display: none;
 }
 
@@ -341,6 +351,28 @@ ul.cast-view {
 ul.cast-view li {
     border: 1px solid #333;
     padding: 10px;
+}
+
+
+.fun-facts {
+  width: 30%;
+}
+
+ul.genres {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+li.heading {
+  font-weight: bold;
+  color: #000;
+}
+
+ul.genres li {
+  display: inline-block;
+  padding: 10px;
+  color: grey;
 }
 
 

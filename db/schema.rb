@@ -11,10 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130830020835) do
+ActiveRecord::Schema.define(version: 20140926033538) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "like_movies", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "movie_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "movies", force: true do |t|
     t.integer  "playlist_id"

@@ -1,0 +1,27 @@
+<%= simple_form_for @playlist_movie do |f| %>
+  <% if @playlist_movie.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@playlist_movie.errors.count, "error") %> prohibited this movie from being saved:</h2>
+
+      <ul>
+      <% @playlist_movie.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :playlist_id %><br>
+
+    <%= f.select(
+       :playlist_id,
+       options_from_collection_for_select(@playlists, :id, :title)
+) %>
+  </div>
+
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

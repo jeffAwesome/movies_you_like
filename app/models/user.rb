@@ -9,5 +9,10 @@ class User < ActiveRecord::Base
   validates :username, uniqueness: true, if: -> { self.username.present? }
 
   has_many :playlists
+  has_many :movie_likes
+
+  def likes?(movie)
+    LikeMovie.where(user_id: id, id: movie).any?
+  end
 
 end

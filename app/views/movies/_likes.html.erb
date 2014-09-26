@@ -1,1 +1,6 @@
-<%= link_to "Like", movie_like_movie_path(@movie.id), method: :post %>
+<% if user_signed_in? && current_user.likes?(@movie.id) %>
+  <%= link_to "Unlike", movie_like_movie_path(@movie.id), method: :delete, remote: true %>
+<% else %>
+ <%= link_to "Like", movie_like_movie_path(@movie.id), method: :post, remote: true %>
+<% end %>
+

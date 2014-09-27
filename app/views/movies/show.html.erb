@@ -12,7 +12,7 @@
      We will need a complete rewrite here. Instead of movies we need to call it playlist_movie.
      render 'movies/new'
    -->
-<%= render 'playlist_movies/new' %>
+        <%= render 'playlist_movies/new' %>
         <% else %>
           <%= link_to "Sign up to save this movie to a playlist", new_user_registration_path, {:class => 'big_button'} %>
       <% end %>

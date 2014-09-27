@@ -17,4 +17,8 @@ $(document).ready ->
   )
 
 
-
+  setTimeout ->
+    $('#add_playlists').click ->
+      $(this).hide()
+      $('#new_playlist_movie').show(100)
+  , 1000

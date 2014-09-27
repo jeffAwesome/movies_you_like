@@ -394,11 +394,13 @@ footer {
 
 
 /* Add To Playlist */
-.static-view #new_movie {
+.static-view #new_movie,
+.interactions #new_playlist_movie {
   display: none;
   clear: both;
 }
 form.new_movie,
+form.playlist_movie
 form.edit_user,
 form.new_user {
     padding: 10px 0;

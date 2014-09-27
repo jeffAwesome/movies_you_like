@@ -9,6 +9,7 @@ class MoviesController < ApplicationController
           mov_id: @movie.id,
           thumbnail: @movie.poster_path
         }).first_or_create!
+
   	@images = Tmdb::Movie.images(params[:id])
   	@cast = Tmdb::Movie.casts(params[:id])
   	@trailers = Tmdb::Movie.trailers(params[:id])
@@ -17,7 +18,13 @@ class MoviesController < ApplicationController
     
     @playlist_movie = PlaylistMovie.new
     @playlist = Playlist.new
-    @playlists = current_user.playlists.all
+
+    if current_user
+      @playlists = current_user.playlists.all
+    else
+      @playlists = {}
+    end
+
     @user = current_user
     @mov_id = @movie.id
     @thumbnail = @movie.poster_path

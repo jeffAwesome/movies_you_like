@@ -5,6 +5,8 @@ MoviesYouLike::Application.routes.draw do
 
   resources :playlists
 
+  resources :playlist_movies
+
   resources :person
 
   devise_for :users

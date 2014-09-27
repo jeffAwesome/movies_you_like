@@ -14,6 +14,14 @@ class MoviesController < ApplicationController
   	@trailers = Tmdb::Movie.trailers(params[:id])
   	@similar_movies = Tmdb::Movie.similar_movies(params[:id])
 
+    
+    @playlist_movie = PlaylistMovie.new
+    @playlist = Playlist.new
+    @playlists = current_user.playlists.all
+    @user = current_user
+    @mov_id = @movie.id
+    @thumbnail = @movie.poster_path
+    @title = @movie.title
 
 
   end

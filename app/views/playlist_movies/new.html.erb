@@ -2,6 +2,7 @@
   <h3>You can't add a movie unless you have a playlist... add one now below:</h3>
   <%= render 'playlists/form' %>
 <% else %>
+  <%= @playlist_movie %>
   <%= simple_form_for @playlist_movie  do |f| %>
     <% if @playlist_movie.errors.any? %>
       <div id="error_explanation">
@@ -33,8 +34,8 @@
         <%= f.text_field :thumbnail, :value => @thumbnail %>
       </div>
       <div class="field">
-        <%= f.label :mov_id %><br>
-        <%= f.number_field :mov_id, :value => @mov_id%>
+        <%= f.label :movie_id %><br>
+        <%= f.number_field :movie_id, :value => @mov_id%>
       </div>
     </div>
     <div class="actions submitBtn">

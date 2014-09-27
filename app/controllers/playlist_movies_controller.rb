@@ -41,8 +41,8 @@ class PlaylistMoviesController < ApplicationController
   def create
     @playlist_movie = PlaylistMovie.new(movie_params)
     respond_to do |format|
-      if @movie.save
-        format.html { redirect_to movie_path(,  notice: 'Movie was successfully added to your playlist.' }
+      if @playlist_movie.save
+        format.html { redirect_to '/',  notice: 'Movie was successfully added to your playlist.' }
         format.json { render action: 'show', status: :created, location: @playlist_movie }
       else
         format.html { render action: 'new' }

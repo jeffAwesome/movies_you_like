@@ -31,10 +31,11 @@
 
 
 	<li class="left">
-    	<a href="/static/view?movieID=<%=movie.mov_id%>" class="clearfix">
+
+      <%= link_to movie_path(movie.movie_id) do %>
         <h4 class="movie-title"><%= movie.title %></h4>
         <%= image_tag("http://#{movie.thumbnail}", class: "left") %>
-        </a>
+      <% end %>
         <div class="playlist-delete">
           <%= link_to 'Delete Movie', movie, method: :delete, data: { confirm: 'Are you sure?' }  if user_signed_in? && current_user.id == @playlist_author %>
         </div>

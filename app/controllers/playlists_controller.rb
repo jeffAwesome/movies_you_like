@@ -46,7 +46,7 @@ class PlaylistsController < ApplicationController
         format.html { redirect_to :back, notice: 'Playlist was successfully created.' }
         format.json { render action: 'show', status: :created, location: @playlist }
       elsif @playlist.save
-        format.html { redirect_to playlists_path(), notice: 'Playlist was successfully created.' }
+        format.html { redirect_to playlist_path(@playlist), notice: 'Playlist was successfully created.' }
         format.json { render action: 'show', status: :created, location: @playlist }
       else
         format.html { render action: 'new' }

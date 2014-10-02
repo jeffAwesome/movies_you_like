@@ -3,6 +3,7 @@
 <head>
   <title>MoviesYouLike</title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
@@ -17,10 +18,9 @@
             <p class="tagline">Type the name of a movie you like... 
 we'll find movies you'd like based on that movie.</p>
 
-            <form id="movie-search" class="movie-search" action="/static/related?search='value'">
-            <input type="search" placeholder="Type the name of a movie" name="search">
-            <input type="submit" value="submit">
-            </form>
+      <%= form_tag(search_index_path, :id => 'movie-search', :class => 'movie-search', :method => "get") do %>
+        <%= text_field_tag(:query, nil, :class => "input-xlarge searchInput", :placeholder => "Type the name of a movie you like") %>
+      <% end %>
 <%= yield %>
 
 </div><!--//application-wrapper-->

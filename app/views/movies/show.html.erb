@@ -1,11 +1,12 @@
-
 <div class="interactions">
-  <div id="likes">
+  <% if user_signed_in? %>
+  <div class="inline" id="likes">
     <%= render partial: "likes" %>
   </div>
-  <div id="add-to-playlist">
+  <% end %>
+  <div class="inline" id="add-to-playlist">
      <% if user_signed_in? %>
-       <%= link_to "Add to playlist", "javascript:;", {:class => 'big_button add_playlists', :id => 'add_playlists' } %>
+       <%= link_to "Add to playlist", "javascript:;", {:class => '', :id => 'add_playlists' } %>
  <!--
      Here we need to create a new model that stores movies in a playlist.
      Originally it was a movie that you created... but now we are doing things differently.
@@ -30,13 +31,27 @@
 
   <div class="genre-list">
    <ul class="genres">
+     <% unless @movie.genres == nil %>
      <li class="heading">Genres</li>
      <% @movie.genres.each do |genre| %>
        <li><%= genre['name'] %></li>
      <% end %>
+     <% end %>
     </ul>
+<h4>Share this movie with Friends</h4>
+<script type="text/javascript">var switchTo5x=true;</script>
+<script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+<script type="text/javascript">stLight.options({publisher: "54b01a15-1b86-434c-ab33-b36e0ba730d5", doNotHash: false, doNotCopy: false, hashAddressBar: false});</script>
+<span class='st_facebook_hcount' displayText='Facebook'></span>
+<span class='st_fblike_hcount' displayText='Facebook Like'></span>
+<span class='st_twitter_hcount' displayText='Tweet'></span>
+<span class='st_linkedin_hcount' displayText='LinkedIn'></span>
+<span class='st_pinterest_hcount' displayText='Pinterest'></span>
+<span class='st_email_hcount' displayText='Email'></span>
+
 
   </section>
+
 
   <section class="content-wrapper more-info clearfix">
       <div id="videoTrailers" class="left">
@@ -64,6 +79,8 @@
 
   </section>
 
+
+
     </div>
     <div class="span10">
     <section class="content-wrapper cast-members">
@@ -71,11 +88,11 @@
 
 			<h3>Cast Members</h3>
                                 <ul class="cast-view">
-				<% @cast.first(5).each do |cast| %>
+				<% @cast.first(10).each do |cast| %>
 <li class="cast-member clearfix">
 <%= image_tag("#{@configuration.base_url}w45#{cast['profile_path']}", class: "left actor-profile") if cast['profile_path'] %>
 <% unless cast['profile_path'] %><img src="http://placehold.it/154x154"><% end %>
-<%= link_to cast['name'], person_path(cast['id']) %> as <%= cast['character'] %><br />
+<%= cast['name'] %> as <%= cast['character'] %><br />
 </li>
 				<% end %>
 
@@ -97,6 +114,38 @@
 
 
 
-<div class="reviews">
-  <%= render "reviews/form" %>
+<div class="reviews content-wrapper">
+
+   <% if user_signed_in? %>
+   <a href="javascript:;" class="add-review">Write a review</a>
+   <a href="javascript:;" class="hide-review-form hidden">Write a review Later</a>
+
+  <div id="createReview" class="hidden">
+    <%= render "reviews/form" %>
+  </div><!-- create Review -->
+
+  <% end %>
+
+  <div id="allReviews">
+
+    <% if @reviews.count > 0 %>
+      <h4>All Reviews for <%= @movie.title %></h4>
+    <% end %>
+    <ul class="review-list">
+    <% @reviews.each do |review| %>
+      <li>
+        <div class="info-review">
+          <i class="star star-<%= review.rating%>"></i>
+          <span class="title"><strong><%= review.title %></strong></span>
+        </div>
+        <div class="author-info">
+          <p> By <%= User.find(review.user_id).username %> at <%= review.created_at.strftime('%D') %></p>
+        </div>
+        <p> <%= review.body %></p>
+      </li>
+    <% end %>
+   </ul>
+  </div><!-- all reviews -->
+
+
 </div><!-- reviews -->

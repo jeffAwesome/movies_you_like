@@ -22,3 +22,15 @@ $(document).ready ->
       $(this).hide()
       $('#new_playlist_movie').show(100)
   , 1000
+
+  $(".add-review").click (e) ->
+    e.preventDefault()
+    $(this).addClass('hidden')
+    $(".hide-review-form, #createReview").removeClass("hidden")
+
+  $(".hide-review-form").click (e) ->
+    e.preventDefault()
+    $(this).addClass('hidden')
+    $("#createReview").addClass("hidden")
+    $(".add-review").removeClass("hidden")
+

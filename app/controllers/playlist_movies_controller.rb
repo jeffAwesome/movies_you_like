@@ -42,7 +42,7 @@ class PlaylistMoviesController < ApplicationController
     @playlist_movie = PlaylistMovie.new(movie_params)
     respond_to do |format|
       if @playlist_movie.save
-        format.html { redirect_to '/',  notice: 'Movie was successfully added to your playlist.' }
+        format.html { redirect_to playlist_path(@playlist_movie.playlist_id),  notice: 'Movie was successfully added to your playlist.' }
         format.json { render action: 'show', status: :created, location: @playlist_movie }
       else
         format.html { render action: 'new' }
@@ -57,7 +57,7 @@ class PlaylistMoviesController < ApplicationController
     @playlists = current_user.playlists.all
     respond_to do |format|
       if @movie.update(movie_params)
-        format.html { redirect_to @playlist_movie, notice: 'Movie was successfully updated.' }
+        format.html { redirect_to playilst_path(@playlist.playlist_id), notice: 'Movie was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -69,9 +69,10 @@ class PlaylistMoviesController < ApplicationController
   # DELETE /movies/1
   # DELETE /movies/1.json
   def destroy
+    playlist = PlaylistMovie.find(params[:id]).playlist_id
     @playlist_movie.destroy
     respond_to do |format|
-      format.html { redirect_to playlists_url }
+      format.html { redirect_to playlist_path(playlist) }
       format.json { head :no_content }
     end
   end

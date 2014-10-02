@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
 
   has_many :playlists
   has_many :movie_likes
+  has_many :reviews
 
   def likes?(movie)
     LikeMovie.where(user_id: id, id: movie).any?

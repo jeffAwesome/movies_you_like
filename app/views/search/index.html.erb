@@ -1,0 +1,18 @@
+<div class="content-wrapper">
+<table class="table table-bordered table-striped table-hover">
+	<% @movie.each do |movie| %>
+		<tr>
+			<td style="width:15%">
+				<%= link_to movie_path(movie.id) do %>
+					<%= image_tag("#{@configuration.base_url}w154#{movie.poster_path}") if movie.poster_path %>
+				<% end %>
+			</td>
+			<td>
+				<%= link_to movie.title, movie_path(movie.id) %> (<%= movie.release_date %>) <br />
+				Directors: <% Tmdb::Movie.crew(movie.id).each do |crew| %> <% if crew['department'] == 'Directing' %> <%= crew['name'] %> <% end %><% end %><br />
+				Starring: <% Tmdb::Movie.casts(movie.id).first(3).each do |cast| %> <%= cast['name'] %> | <% end %><br />
+			</td>
+		</tr>
+	<% end %>
+</table>
+</div>

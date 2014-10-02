@@ -15,5 +15,5 @@
 //= include modernizr.js
 //= include handlebars.js
 //= include plugins.js
-//= include main.js
+//= include movies.js
 //= include static

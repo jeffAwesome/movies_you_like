@@ -12,7 +12,7 @@ class PlaylistsController < ApplicationController
   # GET /playlists/1
   # GET /playlists/1.json
   def show
-    @movies = Movie.where('playlist_id = ?', Playlist.find(params[:id]))
+    @movies = PlaylistMovie.where('playlist_id = ?', Playlist.find(params[:id]))
     @playlist_author = @playlist.user_id
     render :layout => "admin"
   end
@@ -46,7 +46,7 @@ class PlaylistsController < ApplicationController
         format.html { redirect_to :back, notice: 'Playlist was successfully created.' }
         format.json { render action: 'show', status: :created, location: @playlist }
       elsif @playlist.save
-        format.html { redirect_to playlists_path(), notice: 'Playlist was successfully created.' }
+        format.html { redirect_to playlist_path(@playlist), notice: 'Playlist was successfully created.' }
         format.json { render action: 'show', status: :created, location: @playlist }
       else
         format.html { render action: 'new' }

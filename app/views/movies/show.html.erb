@@ -1,24 +1,151 @@
-<p id="notice"><%= notice %></p>
+<div class="interactions">
+  <% if user_signed_in? %>
+  <div class="inline" id="likes">
+    <%= render partial: "likes" %>
+  </div>
+  <% end %>
+  <div class="inline" id="add-to-playlist">
+     <% if user_signed_in? %>
+       <%= link_to "Add to playlist", "javascript:;", {:class => '', :id => 'add_playlists' } %>
+ <!--
+     Here we need to create a new model that stores movies in a playlist.
+     Originally it was a movie that you created... but now we are doing things differently.
+     We will need a complete rewrite here. Instead of movies we need to call it playlist_movie.
+     render 'movies/new'
+   -->
+        <%= render 'playlist_movies/new' %>
+        <% else %>
+          <%= link_to "Sign up to save this movie to a playlist", new_user_registration_path, {:class => 'big_button'} %>
+      <% end %>
+  </div>
+</div>
 
-<p>
-  <strong>Playlist:</strong>
-  <%= @movie.playlist_id %>
-</p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @movie.title %>
-</p>
+ <div class="related">
 
-<p>
-  <strong>Thumbnail:</strong>
-  <%= @movie.thumbnail %>
-</p>
+  <section class="content-wrapper overview-short-description clearfix">
+  <%= image_tag("#{@configuration.base_url}w154#{@movie.poster_path}", :class => "left movie-poster") if @movie.poster_path %>
+  <h2 class="title"><%= @movie.title %></h2>
+  <small><%= @movie.tagline %></small>
+  <p><%= @movie.overview %></p>
 
-<p>
-  <strong>Mov:</strong>
-  <%= @movie.mov_id %>
-</p>
+  <div class="genre-list">
+   <ul class="genres">
+     <% unless @movie.genres == nil %>
+     <li class="heading">Genres</li>
+     <% @movie.genres.each do |genre| %>
+       <li><%= genre['name'] %></li>
+     <% end %>
+     <% end %>
+    </ul>
+<h4>Share this movie with Friends</h4>
+<script type="text/javascript">var switchTo5x=true;</script>
+<script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+<script type="text/javascript">stLight.options({publisher: "54b01a15-1b86-434c-ab33-b36e0ba730d5", doNotHash: false, doNotCopy: false, hashAddressBar: false});</script>
+<span class='st_facebook_hcount' displayText='Facebook'></span>
+<span class='st_fblike_hcount' displayText='Facebook Like'></span>
+<span class='st_twitter_hcount' displayText='Tweet'></span>
+<span class='st_linkedin_hcount' displayText='LinkedIn'></span>
+<span class='st_pinterest_hcount' displayText='Pinterest'></span>
+<span class='st_email_hcount' displayText='Email'></span>
 
-<%= link_to 'Edit', edit_movie_path(@movie) %> |
-<%= link_to 'Back', playlists_path %>
+
+  </section>
+
+
+  <section class="content-wrapper more-info clearfix">
+      <div id="videoTrailers" class="left">
+
+      </div>
+
+      <div class="hidden">
+      <% @trailers['youtube'].each do |trailer| %>
+    		<%= link_to "#{trailer['name']} - #{trailer['size']}", "http://www.youtube.com/watch?v=#{trailer['source']}" %><br />
+                <div class="video-uris" data-id="<%=u  "http://www.youtube.com/watch?v=#{trailer['source']}" %>">Yup yup</div>
+    	<% end %>
+      </div>
+
+
+
+      <div class="fun-facts left">
+      <h3>Facts</h3>
+      Budget: $<%= number_with_delimiter(@movie.budget, :delimiter => ',') %><br />
+      Revenue: $<%= number_with_delimiter(@movie.revenue, :delimiter => ',') %><br />
+      Status: <%= @movie.status %><br />
+      Runtime: <%= @movie.runtime %><br />
+      Release Date: <br />
+      <%= @movie.release_date.to_date.strftime("%d/%m/%Y") if @movie.release_date %><br />
+      </div>
+
+  </section>
+
+
+
+    </div>
+    <div class="span10">
+    <section class="content-wrapper cast-members">
+
+
+			<h3>Cast Members</h3>
+                                <ul class="cast-view">
+				<% @cast.first(10).each do |cast| %>
+<li class="cast-member clearfix">
+<%= image_tag("#{@configuration.base_url}w45#{cast['profile_path']}", class: "left actor-profile") if cast['profile_path'] %>
+<% unless cast['profile_path'] %><img src="http://placehold.it/154x154"><% end %>
+<%= cast['name'] %> as <%= cast['character'] %><br />
+</li>
+				<% end %>
+
+     </section>
+
+			<% if @similar_movies %>
+<div class="hidden">
+			<h3>Similar Movies</h3>
+				<% @similar_movies.first(14).each do |movie| %>
+					<% if movie %>
+						<%= link_to movie_path(movie['id']) do %>
+                                                    <%= movie.title %>
+						<% end %>
+					<% end %>
+				<% end %>
+			<% end %>
+</div><!-- hidden -->
+    </div>
+
+
+
+<div class="reviews content-wrapper">
+
+   <% if user_signed_in? %>
+   <a href="javascript:;" class="add-review">Write a review</a>
+   <a href="javascript:;" class="hide-review-form hidden">Write a review Later</a>
+
+  <div id="createReview" class="hidden">
+    <%= render "reviews/form" %>
+  </div><!-- create Review -->
+
+  <% end %>
+
+  <div id="allReviews">
+
+    <% if @reviews.count > 0 %>
+      <h4>All Reviews for <%= @movie.title %></h4>
+    <% end %>
+    <ul class="review-list">
+    <% @reviews.each do |review| %>
+      <li>
+        <div class="info-review">
+          <i class="star star-<%= review.rating%>"></i>
+          <span class="title"><strong><%= review.title %></strong></span>
+        </div>
+        <div class="author-info">
+          <p> By <%= User.find(review.user_id).username %> at <%= review.created_at.strftime('%D') %></p>
+        </div>
+        <p> <%= review.body %></p>
+      </li>
+    <% end %>
+   </ul>
+  </div><!-- all reviews -->
+
+
+</div><!-- reviews -->

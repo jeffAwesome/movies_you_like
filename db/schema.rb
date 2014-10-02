@@ -11,10 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130830020835) do
+ActiveRecord::Schema.define(version: 20141002024157) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "like_movies", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "movie_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "movies", force: true do |t|
     t.integer  "playlist_id"
@@ -27,6 +34,16 @@ ActiveRecord::Schema.define(version: 20130830020835) do
 
   add_index "movies", ["playlist_id"], name: "index_movies_on_playlist_id", using: :btree
 
+  create_table "playlist_movies", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "movie_id"
+    t.integer  "playlist_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "thumbnail"
+    t.string   "title"
+  end
+
   create_table "playlists", force: true do |t|
     t.string   "title"
     t.datetime "created_at"
@@ -36,6 +53,16 @@ ActiveRecord::Schema.define(version: 20130830020835) do
   end
 
   add_index "playlists", ["user_id"], name: "index_playlists_on_user_id", using: :btree
+
+  create_table "reviews", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "movie_id"
+    t.text     "body"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "title"
+    t.integer  "rating"
+  end
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false

@@ -1,0 +1,39 @@
+<%= simple_form_for @playlist_movie do |f| %>
+  <% if @playlist_movie.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@playlist_movie.errors.count, "error") %> prohibited this movie from being saved:</h2>
+
+      <ul>
+        <% @playlist_movie.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+  <h2 class="select_title">Add the movie to a playlist</h2>
+
+  <div class="field">
+    <%= f.select(
+      :playlist_id,
+      options_from_collection_for_select(@playlists, :id, :title)
+    ) %>
+  </div>
+
+  <div class="hidden">
+    <div class="field">
+      <%= f.text_field :title, :value => "#{@movie.title}" %>
+    </div>
+    <div class="field">
+      <%= f.text_field :thumbnail, :value => "d3gtl9l2a4fn1j.cloudfront.net/t/p/w154/#{@movie.poster_path}" %>
+    </div>
+    <div class="field">
+      <%= f.label :movie_id %><br>
+      <%= f.number_field :movie_id, :value => "#{@movie.id}" %>
+    </div>
+  </div>
+  <div class="actions submitBtn">
+    <%= f.submit :value => "Add Movie To Playlist" %>
+  </div>
+<% end %>

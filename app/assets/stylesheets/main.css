@@ -74,6 +74,26 @@ fieldset {
     padding: 0;
 }
 
+
+label {
+  font-family: "HelveticaNeue-Light","Helvetica Neue Light","Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif;
+    font-weight: 200 !important;
+  text-align: left;
+}
+input,
+textarea {
+    background-image: none;
+    border: 1px solid #cacaca;
+    border-radius: 3px;
+    color: #6d4f45;
+    font-weight: 100;
+    padding: 15px;
+    width: 100%;
+
+    max-width: 300px;
+}
+
+
 /*
  * Allow only vertical resizing of textareas.
  */
@@ -96,6 +116,15 @@ textarea {
 /* ==========================================================================
    Author's custom styles
    ========================================================================== */
+
+/* Helpers */
+.title {
+  margin-bottom: 0 !important;
+}
+
+
+
+
 
 @font-face {
     font-family: 'franchise';
@@ -237,7 +266,8 @@ p.tagline {
 .registrations-edit .tagline,
 .registrations-new #movie-search,
 .sessions-new #movie-search,
-.registrations-edit #movie-search  {
+.registrations-edit #movie-search,
+.noembed-meta-info  {
     display: none;
 }
 
@@ -344,6 +374,82 @@ ul.cast-view li {
 }
 
 
+.fun-facts {
+  width: 30%;
+}
+
+ul.genres {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+li.heading {
+  font-weight: bold;
+  color: #000;
+}
+
+ul.genres li {
+  display: inline-block;
+  padding: 10px;
+  color: grey;
+}
+
+
+
+
+.like {
+  color: #ff0000;
+}
+
+
+.interactions .inline {
+  padding: 10px 10px 10px 0;
+}
+
+.interactions {
+  padding-left: 10%;
+}
+
+
+/* Rating system */
+i.star {
+	background-image: url(star-rating-sprite.png);
+	display: inline-block;
+	height: 16px;
+	width: 80px;
+	background-position: -80px;
+	background-position: -48px;
+}
+
+i.star-1    { background-position: -64px -47px; }
+i.star-2    { background-position: -48px -48px; }
+i.star-3    { background-position: -32px -48px; }
+i.star-4    { background-position: -16px -48px; }
+i.star-5    { background-position: 0 0; }
+i.star-qtr  { background-position: 0 -32px; }
+i.star-half { background-position: 0 -16px; }
+i.star-3qtr { background-position: 0; }
+
+
+/* Reviews */
+
+ul.review-list {
+  text-align: left;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+
+ul.review-list li {
+  padding: 10px 0;
+  color: #333;
+  font-size: 13px;
+  font-weight: normal;
+  font-family: Arial,sans-serif;
+}
+
 
 /* Footer */
 
@@ -362,11 +468,13 @@ footer {
 
 
 /* Add To Playlist */
-.static-view #new_movie {
+.static-view #new_movie,
+.interactions #new_playlist_movie {
   display: none;
   clear: both;
 }
 form.new_movie,
+form.playlist_movie
 form.edit_user,
 form.new_user {
     padding: 10px 0;
@@ -522,6 +630,10 @@ select {
 
 .right {
     float: right;
+}
+
+.inline {
+  display: inline-block;
 }
 
 .left.movie-poster {

@@ -1,0 +1,12 @@
+<% if user_signed_in? && current_user.likes?(@movie.id) %>
+  <a rel="nofollow" href="<%= movie_like_movie_path(@movie.id) %>" data-remote="true" data-method="delete">
+   Unlike
+  <i class="unlike fa fa-heart"></i>
+   </a>
+<% else %>
+  <a rel="nofollow" href="<%= movie_like_movie_path(@movie.id) %>" data-remote="true" data-method="post">
+     Like
+     <i class="like fa fa-heart"></i>
+   </a>
+<% end %>
+

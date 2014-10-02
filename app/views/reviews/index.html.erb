@@ -1,0 +1,28 @@
+<h1>Your Reviews</h1>
+
+
+  <% if @reviews.count >= 1 %>
+
+
+   <% end %>
+  <div class="playlist-container clearfix">
+
+
+
+    <% @reviews.each do |review| %>
+      <div class="playlist">
+       <strong> Review for <%= Movie.find(review.movie_id).title %></strong>
+       <%= link_to movie_path(review.movie_id) do %>
+         <p><%= review.body %></p>
+       <% end %>
+        <%= link_to 'Edit', edit_review_path(review) %>
+        <%= link_to 'Delete', review, method: :delete, data: { confirm: 'Are you sure?' } %>
+       </div>
+    <% end %>
+
+</div>
+<br>
+
+
+
+

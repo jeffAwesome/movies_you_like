@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
   has_many :reviews
 
   def likes?(movie)
-    LikeMovie.where(user_id: id, id: movie).any?
+    LikeMovie.where(user_id: id, movie_id: movie).any?
   end
 
 end

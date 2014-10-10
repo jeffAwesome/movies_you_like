@@ -1,6 +1,6 @@
 
-<% if @likes.count > 0 && @reviews.count > 0 && @playlists.count > 0 %>
-  <h4><% @user.username %> currently has an account but hasn't liked, reviewed, or made any playlists.</h4>
+<% if @likes.count ==  0 && @reviews.count == 0 && @playlists.count == 0 %>
+  <h4><%= @user.username %> currently has an account but hasn't liked, reviewed, or made any playlists.</h4>
 <% end %>
 <div class="profile clearfix">
 <% if @likes.count > 0 %>

@@ -4,7 +4,6 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.xml  { render :xml => @users }
     end
   end
 
@@ -13,9 +12,9 @@ class UsersController < ApplicationController
     @reviews = Review.where(user_id: @user.id)
     @likes = LikeMovie.where(user_id: @user.id)
 
+
     respond_to do |format|
       format.html # show.html.erb
-      format.xml  { render :xml => @user }
     end
   end
 end

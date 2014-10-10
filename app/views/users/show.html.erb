@@ -1,3 +1,8 @@
 This is the show for  <%= @user.email %>
 Reviews: <%= @reviews.count %>
 Likes: <%= @likes.count %>
+
+<% @likes.each_with_index do |like, index| %>
+  <%= like.movie_id %>
+<% end %>
+

@@ -1,8 +1,29 @@
-This is the show for  <%= @user.email %>
-Reviews: <%= @reviews.count %>
-Likes: <%= @likes.count %>
-
-<% @likes.each_with_index do |like, index| %>
-  <%= like.movie_id %>
+<div class="profile clearfix">
+<% if @likes.count > 0 %>
+  <div class="user-likes">
+  <h5><%= @user.email.pluralize %> Likes </h5>
+  <ol>
+  <% @likes.each_with_index do |like, index| %>
+    <!-- omg this is so so bad... fix this -->
+    <li>
+      <%= link_to Movie.find(like.movie_id).title, movie_path(like.movie_id) %>
+    </li>
+  <% end %>
+  </ol>
+  </div>
 <% end %>
 
+
+
+<% if @reviews.count > 0 %>
+  <div class="user-reviews">
+   <h5><%= @user.email.pluralize %> Reviews</h5>
+  <ol>
+    <% @reviews.each_with_index do |review, index| %>
+      <li><%= link_to Movie.find(review.movie_id).title, movie_path(review.movie_id) %></li>
+    <% end %>
+  </ol>
+  </div>
+<% end %>
+
+</div>

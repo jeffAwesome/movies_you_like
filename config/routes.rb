@@ -5,7 +5,7 @@ MoviesYouLike::Application.routes.draw do
     resource :like_movie, module: :movies
   end
 
-  resources :users
+  get '/members/', :to => "users#index"
 
   resources :playlists
 
@@ -14,6 +14,8 @@ MoviesYouLike::Application.routes.draw do
   resources :person
 
   devise_for :users
+  get '/members/:id', :to => "users#show", :as => :user
+
   get "search/index"
 
   # The priority is based upon order of creation: first created -> highest priority.

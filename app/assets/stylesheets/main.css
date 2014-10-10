@@ -585,6 +585,24 @@ select {
 }
 
 
+/* User profile */
+.profile {
+  padding: 0 20px;
+}
+
+.user-likes {
+  float: left;
+  width: 350px;
+  text-align: left;
+}
+
+.user-reviews {
+  float: left;
+  width: 350px;
+  text-align: left;
+}
+
+
 /* ==========================================================================
    Helper classes
    ========================================================================== */

@@ -590,17 +590,15 @@ select {
   padding: 0 20px;
 }
 
-.user-likes {
+.user-likes,
+.user-reviews,
+.user-playlists,
+.amazon-ad {
   float: left;
   width: 350px;
   text-align: left;
 }
 
-.user-reviews {
-  float: left;
-  width: 350px;
-  text-align: left;
-}
 
 
 /* ==========================================================================

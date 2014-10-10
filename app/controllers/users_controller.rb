@@ -11,7 +11,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @reviews = Review.where(user_id: @user.id)
     @likes = LikeMovie.where(user_id: @user.id)
-
+    @playlists = Playlist.where(user_id: @user.id)
 
     respond_to do |format|
       format.html # show.html.erb

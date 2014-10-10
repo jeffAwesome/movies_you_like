@@ -139,7 +139,7 @@
           <span class="title"><strong><%= review.title %></strong></span>
         </div>
         <div class="author-info">
-          <p> By <%= User.find(review.user_id).username %> at <%= review.created_at.strftime('%D') %></p>
+          <p> By <%= link_to User.find(review.user_id).username, user_path(review.user_id) %> at <%= review.created_at.strftime('%D') %></p>
         </div>
         <p> <%= review.body %></p>
       </li>

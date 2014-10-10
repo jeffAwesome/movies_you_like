@@ -578,6 +578,13 @@ select {
 }
 
 
+/* Ads */
+.ads {
+  width: 729px;
+  margin: 15px auto;
+}
+
+
 /* ==========================================================================
    Helper classes
    ========================================================================== */
@@ -597,7 +604,7 @@ select {
 
 .small-wrapper {
     max-width: 530px;
-    margin: 100px auto 45px;
+    margin: 55px auto 45px;
 }
 
 .large-wrapper {

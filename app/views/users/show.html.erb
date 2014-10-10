@@ -1,7 +1,11 @@
+
+<% if @likes.count > 0 && @reviews.count > 0 && @playlists.count > 0 %>
+  <h4><% @user.username %> currently has an account but hasn't liked, reviewed, or made any playlists.</h4>
+<% end %>
 <div class="profile clearfix">
 <% if @likes.count > 0 %>
   <div class="user-likes">
-  <h5><%= @user.email.pluralize %> Likes </h5>
+  <h5><%= @user.username.pluralize %> Likes </h5>
   <ol>
   <% @likes.each_with_index do |like, index| %>
     <!-- omg this is so so bad... fix this -->
@@ -16,7 +20,7 @@
 
 <% if @reviews.count > 0 %>
   <div class="user-reviews">
-   <h5><%= @user.email.pluralize %> Reviews</h5>
+   <h5><%= @user.username.pluralize %> Reviews</h5>
   <ol>
     <% @reviews.each_with_index do |review, index| %>
       <li><%= link_to Movie.find(review.movie_id).title, movie_path(review.movie_id) %></li>
@@ -31,7 +35,7 @@
 <div class="profile clearfix">
   <% if @playlists.count > 0 %>
     <div class="user-playlists">
-      <h5> <%= @user.email.pluralize %> Playlists</h5>
+      <h5> <%= @user.username.pluralize %> Playlists</h5>
       <ol>
         <% @playlists.each_with_index do |playlist, index| %>
           <li><%= link_to playlist.title, playlist_path(playlist.id) %></li>

@@ -5,6 +5,8 @@ MoviesYouLike::Application.routes.draw do
     resource :like_movie, module: :movies
   end
 
+  resources :users
+
   resources :playlists
 
   resources :playlist_movies

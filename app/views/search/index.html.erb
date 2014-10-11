@@ -1,5 +1,10 @@
 <div class="content-wrapper">
 <table class="table table-bordered table-striped table-hover">
+        <% if @movie.count == 0 %>
+          <h4>There were no results for your search. If this is a movie it must not be in our database yet</h4>
+          <h5>Please be patient, we've been notified and it will be in our database soon.</h5>
+        <% end %>
+
 	<% @movie.each do |movie| %>
 		<tr>
 			<td style="width:15%">

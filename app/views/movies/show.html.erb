@@ -133,15 +133,16 @@
     <% end %>
     <ul class="review-list">
     <% @reviews.each do |review| %>
+      <% the_user = User.find(review.user_id) %>
       <li>
         <div class="info-review">
           <i class="star star-<%= review.rating%>"></i>
           <span class="title"><strong><%= review.title %></strong></span>
         </div>
-        <div class="author-info">
-          <p> By <%= link_to User.find(review.user_id).username, user_path(review.user_id) %> at <%= review.created_at.strftime('%D') %></p>
+        <div class="author-info clearfix">
+          <p> <img class="profile-pic left" src="<%= the_user.image %>" /> <%= review.body %></p>
         </div>
-        <p> <%= review.body %></p>
+        <p> By <%= link_to the_user.username, user_path(review.user_id) %> at <%= review.created_at.strftime('%D') %></p>
       </li>
     <% end %>
    </ul>

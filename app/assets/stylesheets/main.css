@@ -450,6 +450,18 @@ ul.review-list li {
   font-family: Arial,sans-serif;
 }
 
+.profile-pic {
+  margin: 0 10px;
+}
+
+.profile-pic.left {
+  margin: 0 10px 0 0;
+}
+
+.profile-pic.right {
+  margin: 0 0 0 10px;
+}
+
 
 /* Footer */
 

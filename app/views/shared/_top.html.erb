@@ -7,11 +7,14 @@
           <%= link_to 'Your Reviews', reviews_path %> |
           <%= link_to 'Random', movie_path(Movie.random) %> |
 	  <%= link_to 'Create A Playlists', new_playlist_path %> |
+	  <%= link_to "sign in with facebook", user_omniauth_authorize_path(:facebook) %> |
 	  <%= link_to "Logout", destroy_user_session_path, method: :delete %>
 	<% else %>
     <%= link_to 'Home', root_path %> |
           <%= link_to 'Random', movie_path(Movie.random) %> |
 	  <%= link_to "Sign up", new_user_registration_path %> |
+	  <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %> |
+	  	  <%= link_to "Sign up with facebook", user_omniauth_authorize_path(:facebook) %> |
 	  <%= link_to "Login", new_user_session_path %>
 	<% end %>
 	<br />

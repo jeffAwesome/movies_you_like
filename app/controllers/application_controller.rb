@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
 
   before_filter :configure_permitted_parameters, if: :devise_controller?
   before_filter :set_config
+  before_filter :ensure_signup_complete, only: [:new, :create, :update, :destroy]
 
   Tmdb::Api.key("8e7c67585fa149a56537b63fe68776ae")
 
@@ -19,6 +20,12 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.for(:sign_up) do |u|
       u.permit :username, :email, :password, :password_confirmation
     end
+  end
+
+  def ensure_signup_complete
+    # Ensure we don't go into an infinite loop
+    return if action_name == 'finish_signup'
+
   end
 
 

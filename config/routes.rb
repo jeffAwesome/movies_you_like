@@ -13,7 +13,8 @@ MoviesYouLike::Application.routes.draw do
 
   resources :person
 
-  devise_for :users
+  #devise_for :users
+  devise_for :users, :controllers => { omniauth_callbacks: 'omniauth_callbacks' }
   get '/members/:id', :to => "users#show", :as => :user
 
   get "search/index"

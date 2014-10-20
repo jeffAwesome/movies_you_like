@@ -29,7 +29,14 @@ class MoviesController < ApplicationController
       id: @movie.id,
       title: @movie.title,
       mov_id: @movie.id,
-      thumbnail: @movie.poster_path
+      thumbnail: @movie.poster_path,
+      overview: @movie.overview,
+      tagline:  @movie.tagline,
+      budget: @movie.budget,
+      revenue: @movie.revenu,
+      status: @movie.status,
+      runtime: @movie.runtime,
+      release_date: @movie.release_date,
     }).first_or_create
 
 

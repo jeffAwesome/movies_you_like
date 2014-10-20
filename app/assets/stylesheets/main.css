@@ -602,8 +602,6 @@ select {
   padding: 0 20px;
 }
 
-.user-likes,
-.user-reviews,
 .user-playlists,
 .amazon-ad {
   float: left;
@@ -611,6 +609,10 @@ select {
   text-align: left;
 }
 
+.user-likes ol,
+.user-reviews ol {
+  list-style: none;
+}
 
 
 /* ==========================================================================

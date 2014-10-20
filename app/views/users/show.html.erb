@@ -2,15 +2,21 @@
 <% if @likes.count ==  0 && @reviews.count == 0 && @playlists.count == 0 %>
   <h4><%= @user.username %> currently has an account but hasn't liked, reviewed, or made any playlists.</h4>
 <% end %>
+
 <div class="profile clearfix">
+
+<h3>Recent Activity</h3>
 <% if @likes.count > 0 %>
   <div class="user-likes">
   <h5><%= @user.username.pluralize %> Likes </h5>
   <ol>
   <% @likes.each_with_index do |like, index| %>
+    <% movie = Movie.find(like.movie_id) %>
     <!-- omg this is so so bad... fix this -->
     <li>
-      <%= link_to Movie.find(like.movie_id).title, movie_path(like.movie_id) %>
+      <%= link_to(movie) do %>
+        <%= image_tag("#{@configuration.base_url}w154#{movie.thumbnail}", :class => "left movie-poster") if movie.thumbnail %>
+      <% end %>
     </li>
   <% end %>
   </ol>
@@ -23,7 +29,13 @@
    <h5><%= @user.username.pluralize %> Reviews</h5>
   <ol>
     <% @reviews.each_with_index do |review, index| %>
-      <li><%= link_to Movie.find(review.movie_id).title, movie_path(review.movie_id) %></li>
+      <% movie = Movie.find(review.movie_id) %>
+      <li>
+        <%= link_to(movie) do %>
+          <%= image_tag("#{@configuration.base_url}w154#{movie.thumbnail}", :class => "left movie-poster") if movie.thumbnail %>
+        <% end %>
+
+      </li>
     <% end %>
   </ol>
   </div>

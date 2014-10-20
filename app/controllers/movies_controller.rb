@@ -30,7 +30,7 @@ class MoviesController < ApplicationController
       title: @movie.title,
       mov_id: @movie.id,
       thumbnail: @movie.poster_path,
-      overview: @movie.overview,
+      overview: @movie.overviews,
       tagline:  @movie.tagline,
       budget: @movie.budget.to_i,
       revenue: @movie.revenu.to_i,

@@ -32,10 +32,10 @@ class MoviesController < ApplicationController
       thumbnail: @movie.poster_path,
       overview: @movie.overview,
       tagline:  @movie.tagline,
-      budget: @movie.budget,
-      revenue: @movie.revenu,
+      budget: @movie.budget.to_i,
+      revenue: @movie.revenu.to_i,
       status: @movie.status,
-      runtime: @movie.runtime,
+      runtime: @movie.runtime.to_s,
       release_date: @movie.release_date,
     }).first_or_create
 
